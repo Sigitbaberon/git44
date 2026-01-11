@@ -1,5 +1,10 @@
 import { RequestHandler } from "express";
-import { createRemovalJob, getRemovalJob, getUserRemovalJobs, getUserQuota } from "../utils/db";
+import {
+  createRemovalJob,
+  getRemovalJob,
+  getUserRemovalJobs,
+  getUserQuota,
+} from "../utils/db";
 import { jobQueue } from "../utils/queue";
 
 export const handleCreateRemovalJob: RequestHandler = (req, res) => {

@@ -3,7 +3,13 @@ import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { toast } from "sonner";
 import { Mail, Lock, ArrowRight, Loader2, CheckCircle2 } from "lucide-react";
 
@@ -21,7 +27,9 @@ export default function Register() {
     setPasswordMatch(newPassword === confirmPassword);
   };
 
-  const handleConfirmPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleConfirmPasswordChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+  ) => {
     const newConfirmPassword = e.target.value;
     setConfirmPassword(newConfirmPassword);
     setPasswordMatch(password === newConfirmPassword);
@@ -104,7 +112,9 @@ export default function Register() {
           <CardContent>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="space-y-2">
-                <Label htmlFor="email" className="text-slate-200">Email</Label>
+                <Label htmlFor="email" className="text-slate-200">
+                  Email
+                </Label>
                 <div className="relative">
                   <Mail className="absolute left-3 top-3 h-4 w-4 text-slate-500" />
                   <Input
@@ -120,7 +130,9 @@ export default function Register() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="password" className="text-slate-200">Password</Label>
+                <Label htmlFor="password" className="text-slate-200">
+                  Password
+                </Label>
                 <div className="relative">
                   <Lock className="absolute left-3 top-3 h-4 w-4 text-slate-500" />
                   <Input
@@ -133,27 +145,59 @@ export default function Register() {
                     disabled={isLoading}
                   />
                 </div>
-                
+
                 {password && (
                   <div className="mt-3 space-y-2 bg-slate-700/30 p-3 rounded-md">
                     <div className="flex items-center text-xs">
-                      <div className={`w-1.5 h-1.5 rounded-full mr-2 ${passwordStrength.hasMinLength ? "bg-green-500" : "bg-slate-600"}`}></div>
-                      <span className={passwordStrength.hasMinLength ? "text-green-400" : "text-slate-400"}>At least 8 characters</span>
+                      <div
+                        className={`w-1.5 h-1.5 rounded-full mr-2 ${passwordStrength.hasMinLength ? "bg-green-500" : "bg-slate-600"}`}
+                      ></div>
+                      <span
+                        className={
+                          passwordStrength.hasMinLength
+                            ? "text-green-400"
+                            : "text-slate-400"
+                        }
+                      >
+                        At least 8 characters
+                      </span>
                     </div>
                     <div className="flex items-center text-xs">
-                      <div className={`w-1.5 h-1.5 rounded-full mr-2 ${passwordStrength.hasUpperCase ? "bg-green-500" : "bg-slate-600"}`}></div>
-                      <span className={passwordStrength.hasUpperCase ? "text-green-400" : "text-slate-400"}>Uppercase letter</span>
+                      <div
+                        className={`w-1.5 h-1.5 rounded-full mr-2 ${passwordStrength.hasUpperCase ? "bg-green-500" : "bg-slate-600"}`}
+                      ></div>
+                      <span
+                        className={
+                          passwordStrength.hasUpperCase
+                            ? "text-green-400"
+                            : "text-slate-400"
+                        }
+                      >
+                        Uppercase letter
+                      </span>
                     </div>
                     <div className="flex items-center text-xs">
-                      <div className={`w-1.5 h-1.5 rounded-full mr-2 ${passwordStrength.hasNumber ? "bg-green-500" : "bg-slate-600"}`}></div>
-                      <span className={passwordStrength.hasNumber ? "text-green-400" : "text-slate-400"}>Number</span>
+                      <div
+                        className={`w-1.5 h-1.5 rounded-full mr-2 ${passwordStrength.hasNumber ? "bg-green-500" : "bg-slate-600"}`}
+                      ></div>
+                      <span
+                        className={
+                          passwordStrength.hasNumber
+                            ? "text-green-400"
+                            : "text-slate-400"
+                        }
+                      >
+                        Number
+                      </span>
                     </div>
                   </div>
                 )}
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="confirmPassword" className="text-slate-200">Confirm Password</Label>
+                <Label htmlFor="confirmPassword" className="text-slate-200">
+                  Confirm Password
+                </Label>
                 <div className="relative">
                   <Lock className="absolute left-3 top-3 h-4 w-4 text-slate-500" />
                   <Input
@@ -195,8 +239,8 @@ export default function Register() {
             <div className="mt-6 pt-6 border-t border-slate-700">
               <p className="text-center text-slate-400 text-sm">
                 Already have an account?{" "}
-                <Link 
-                  to="/login" 
+                <Link
+                  to="/login"
                   className="text-cyan-400 hover:text-cyan-300 font-semibold transition-colors"
                 >
                   Sign in

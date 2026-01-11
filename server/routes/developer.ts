@@ -1,5 +1,12 @@
 import { RequestHandler } from "express";
-import { getApiKeyByKey, getUserQuota, getUserById, getRemovalJob, createRemovalJob, getUserApiKeys } from "../utils/db";
+import {
+  getApiKeyByKey,
+  getUserQuota,
+  getUserById,
+  getRemovalJob,
+  createRemovalJob,
+  getUserApiKeys,
+} from "../utils/db";
 import { jobQueue } from "../utils/queue";
 import { DeveloperGenerateResponse } from "@shared/api";
 
@@ -37,14 +44,18 @@ export const handleDeveloperGenerate: RequestHandler = (req, res) => {
   }
 
   if (!link) {
-    return res.status(400).json({ status: "failed", error: "Link is required" });
+    return res
+      .status(400)
+      .json({ status: "failed", error: "Link is required" });
   }
 
   // Validate URL
   try {
     new URL(link);
   } catch {
-    return res.status(400).json({ status: "failed", error: "Invalid URL format" });
+    return res
+      .status(400)
+      .json({ status: "failed", error: "Invalid URL format" });
   }
 
   // Check quota
@@ -87,7 +98,12 @@ export const handleDeveloperStatus: RequestHandler = (req, res) => {
   }
 
   const response: DeveloperGenerateResponse = {
-    status: job.status === "success" ? "success" : job.status === "failed" ? "failed" : "processing",
+    status:
+      job.status === "success"
+        ? "success"
+        : job.status === "failed"
+          ? "failed"
+          : "processing",
     taskId: job.id,
     link: job.outputLink || null,
   };

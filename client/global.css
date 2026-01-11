@@ -53,7 +53,8 @@
   }
 
   /* Dark mode - Slate-900 professional theme */
-  :root, .dark {
+  :root,
+  .dark {
     --background: 15 23% 6%;
     --foreground: 210 40% 98%;
 

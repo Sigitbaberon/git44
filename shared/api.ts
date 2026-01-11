@@ -62,7 +62,12 @@ export interface DeveloperStats {
 }
 
 // ===== Job & Removal Types =====
-export type JobStatus = "queued" | "processing" | "polling" | "success" | "failed";
+export type JobStatus =
+  | "queued"
+  | "processing"
+  | "polling"
+  | "success"
+  | "failed";
 
 export interface RemovalJob {
   id: string;
@@ -167,7 +172,14 @@ export interface AdminUser {
 export interface AdminLog {
   id: string;
   timestamp: string;
-  type: "request" | "error" | "retry" | "cooldown" | "quota" | "api_usage" | "admin_action";
+  type:
+    | "request"
+    | "error"
+    | "retry"
+    | "cooldown"
+    | "quota"
+    | "api_usage"
+    | "admin_action";
   userId?: string;
   jobId?: string;
   message: string;

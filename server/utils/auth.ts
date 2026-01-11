@@ -1,7 +1,10 @@
 import { User, AuthResponse } from "@shared/api";
 
 // Simple JWT-like token creation (in production, use jsonwebtoken library)
-export function generateToken(userId: string, expiresIn: number = 24 * 60 * 60 * 1000): string {
+export function generateToken(
+  userId: string,
+  expiresIn: number = 24 * 60 * 60 * 1000,
+): string {
   const payload = {
     userId,
     iat: Date.now(),

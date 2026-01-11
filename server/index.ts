@@ -4,7 +4,13 @@ import cors from "cors";
 import { initializeDb } from "./utils/db";
 
 // Auth routes
-import { handleRegister, handleLogin, handleRefreshToken, authMiddleware, adminMiddleware } from "./routes/auth";
+import {
+  handleRegister,
+  handleLogin,
+  handleRefreshToken,
+  authMiddleware,
+  adminMiddleware,
+} from "./routes/auth";
 
 // Removal job routes
 import {
@@ -57,7 +63,11 @@ export function createServer() {
 
   // ===== REMOVAL JOB ROUTES (require authentication) =====
   app.post("/api/removal/create", authMiddleware, handleCreateRemovalJob);
-  app.get("/api/removal/:jobId/status", authMiddleware, handleGetRemovalJobStatus);
+  app.get(
+    "/api/removal/:jobId/status",
+    authMiddleware,
+    handleGetRemovalJobStatus,
+  );
   app.get("/api/removal/user/jobs", authMiddleware, handleGetUserRemovalJobs);
   app.get("/api/removal/queue/stats", handleGetQueueStats);
 
@@ -76,18 +86,43 @@ export function createServer() {
 
   // ===== ADMIN ROUTES =====
   // All admin routes require both authentication and admin role
-  app.get("/api/admin/stats", authMiddleware, adminMiddleware, handleAdminStats);
-  app.get("/api/admin/users", authMiddleware, adminMiddleware, handleAdminUsers);
-  app.get("/api/admin/scraper-keys", authMiddleware, adminMiddleware, handleAdminScraperKeys);
+  app.get(
+    "/api/admin/stats",
+    authMiddleware,
+    adminMiddleware,
+    handleAdminStats,
+  );
+  app.get(
+    "/api/admin/users",
+    authMiddleware,
+    adminMiddleware,
+    handleAdminUsers,
+  );
+  app.get(
+    "/api/admin/scraper-keys",
+    authMiddleware,
+    adminMiddleware,
+    handleAdminScraperKeys,
+  );
   app.patch(
     "/api/admin/scraper-keys/:keyId",
     authMiddleware,
     adminMiddleware,
-    handleAdminUpdateScraperKey
+    handleAdminUpdateScraperKey,
   );
   app.get("/api/admin/logs", authMiddleware, adminMiddleware, handleAdminLogs);
-  app.get("/api/admin/queue", authMiddleware, adminMiddleware, handleAdminQueueStatus);
-  app.get("/api/admin/system-status", authMiddleware, adminMiddleware, handleAdminSystemStatus);
+  app.get(
+    "/api/admin/queue",
+    authMiddleware,
+    adminMiddleware,
+    handleAdminQueueStatus,
+  );
+  app.get(
+    "/api/admin/system-status",
+    authMiddleware,
+    adminMiddleware,
+    handleAdminSystemStatus,
+  );
 
   // Health check
   app.get("/api/health", (_req, res) => {

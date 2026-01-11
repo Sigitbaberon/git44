@@ -3,19 +3,25 @@ import { useNavigate } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { toast } from "sonner";
-import { 
-  Upload, 
-  Play, 
-  Download, 
-  Clock, 
-  CheckCircle2, 
+import {
+  Upload,
+  Play,
+  Download,
+  Clock,
+  CheckCircle2,
   AlertCircle,
   Loader2,
   Copy,
-  Share2
+  Share2,
 } from "lucide-react";
 import { RemovalJob, JobStatus } from "@shared/api";
 
@@ -65,7 +71,7 @@ export default function Dashboard() {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": `Bearer ${localStorage.getItem("accessToken")}`,
+          Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
         },
         body: JSON.stringify({ link: videoLink }),
       });
@@ -87,11 +93,13 @@ export default function Dashboard() {
         const maxAttempts = 16; // ~5 seconds with 3-5 second intervals
 
         while (attempts < maxAttempts) {
-          await new Promise(resolve => setTimeout(resolve, 3000 + Math.random() * 2000));
-          
+          await new Promise((resolve) =>
+            setTimeout(resolve, 3000 + Math.random() * 2000),
+          );
+
           const statusResponse = await fetch(`/api/removal/${data.id}/status`, {
             headers: {
-              "Authorization": `Bearer ${localStorage.getItem("accessToken")}`,
+              Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
             },
           });
 
@@ -173,7 +181,9 @@ export default function Dashboard() {
         {/* Page Header */}
         <div className="mb-12">
           <h1 className="text-4xl font-bold text-white mb-2">Dashboard</h1>
-          <p className="text-slate-400">Upload and remove watermarks from your videos</p>
+          <p className="text-slate-400">
+            Upload and remove watermarks from your videos
+          </p>
         </div>
 
         <div className="grid lg:grid-cols-3 gap-8">
@@ -187,7 +197,8 @@ export default function Dashboard() {
                   Remove Watermark
                 </CardTitle>
                 <CardDescription className="text-slate-400">
-                  Paste video link from TikTok, Instagram, YouTube, Shorts, and more
+                  Paste video link from TikTok, Instagram, YouTube, Shorts, and
+                  more
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -205,7 +216,8 @@ export default function Dashboard() {
                       disabled={isLoading}
                     />
                     <p className="text-xs text-slate-400 mt-2">
-                      Supported: TikTok, Instagram, YouTube, Shorts, Reels, and more
+                      Supported: TikTok, Instagram, YouTube, Shorts, Reels, and
+                      more
                     </p>
                   </div>
 
@@ -234,22 +246,30 @@ export default function Dashboard() {
             {currentJob && (
               <Card className="border-slate-700/50 bg-slate-800/50 backdrop-blur-sm">
                 <CardHeader>
-                  <CardTitle className="text-white">Processing Status</CardTitle>
+                  <CardTitle className="text-white">
+                    Processing Status
+                  </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-6">
                   {/* Status Badge */}
                   <div>
-                    <div className={`inline-flex items-center px-4 py-2 rounded-lg border ${getStatusColor(currentJob.status)}`}>
+                    <div
+                      className={`inline-flex items-center px-4 py-2 rounded-lg border ${getStatusColor(currentJob.status)}`}
+                    >
                       {getStatusIcon(currentJob.status)}
                       <span className="ml-2 font-semibold capitalize">
-                        {currentJob.status === "polling" ? "Processing..." : currentJob.status}
+                        {currentJob.status === "polling"
+                          ? "Processing..."
+                          : currentJob.status}
                       </span>
                     </div>
                   </div>
 
                   {/* Input URL */}
                   <div>
-                    <label className="text-sm font-medium text-slate-300 block mb-2">Input URL</label>
+                    <label className="text-sm font-medium text-slate-300 block mb-2">
+                      Input URL
+                    </label>
                     <div className="flex items-center gap-2">
                       <Input
                         readOnly
@@ -272,7 +292,9 @@ export default function Dashboard() {
                   {currentJob.status === "success" && currentJob.outputLink && (
                     <div className="space-y-3">
                       <div>
-                        <label className="text-sm font-medium text-slate-300 block mb-2">Download Link</label>
+                        <label className="text-sm font-medium text-slate-300 block mb-2">
+                          Download Link
+                        </label>
                         <div className="flex items-center gap-2">
                           <Input
                             readOnly
@@ -283,7 +305,9 @@ export default function Dashboard() {
                             type="button"
                             size="icon"
                             variant="outline"
-                            onClick={() => copyToClipboard(currentJob.outputLink!)}
+                            onClick={() =>
+                              copyToClipboard(currentJob.outputLink!)
+                            }
                             className="border-green-500/50"
                           >
                             <Copy className="h-4 w-4" />
@@ -291,7 +315,9 @@ export default function Dashboard() {
                           <Button
                             type="button"
                             size="icon"
-                            onClick={() => downloadVideo(currentJob.outputLink!)}
+                            onClick={() =>
+                              downloadVideo(currentJob.outputLink!)
+                            }
                             className="bg-green-600 hover:bg-green-700"
                           >
                             <Download className="h-4 w-4" />
@@ -301,7 +327,9 @@ export default function Dashboard() {
 
                       {/* Video Preview */}
                       <div>
-                        <label className="text-sm font-medium text-slate-300 block mb-2">Preview</label>
+                        <label className="text-sm font-medium text-slate-300 block mb-2">
+                          Preview
+                        </label>
                         <div className="bg-slate-700/30 rounded-lg overflow-hidden">
                           <video
                             src={currentJob.outputLink}
@@ -331,11 +359,15 @@ export default function Dashboard() {
                     </div>
                     <div className="flex justify-between">
                       <span>Retries:</span>
-                      <span>{currentJob.retryCount}/{currentJob.maxRetries}</span>
+                      <span>
+                        {currentJob.retryCount}/{currentJob.maxRetries}
+                      </span>
                     </div>
                     <div className="flex justify-between">
                       <span>Polls:</span>
-                      <span>{currentJob.pollCount}/{currentJob.maxPolls}</span>
+                      <span>
+                        {currentJob.pollCount}/{currentJob.maxPolls}
+                      </span>
                     </div>
                   </div>
                 </CardContent>
@@ -346,17 +378,24 @@ export default function Dashboard() {
             {!currentJob && (
               <Card className="border-slate-700/50 bg-slate-800/50 backdrop-blur-sm">
                 <CardHeader>
-                  <CardTitle className="text-white text-lg">Tips for Best Results</CardTitle>
+                  <CardTitle className="text-white text-lg">
+                    Tips for Best Results
+                  </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <ul className="space-y-2 text-slate-300 text-sm">
                     <li className="flex items-start">
                       <span className="inline-block w-2 h-2 rounded-full bg-cyan-400 mr-3 mt-1 flex-shrink-0"></span>
-                      <span>Use direct video links from TikTok, Instagram, YouTube, etc.</span>
+                      <span>
+                        Use direct video links from TikTok, Instagram, YouTube,
+                        etc.
+                      </span>
                     </li>
                     <li className="flex items-start">
                       <span className="inline-block w-2 h-2 rounded-full bg-cyan-400 mr-3 mt-1 flex-shrink-0"></span>
-                      <span>Keep your browser window open while processing</span>
+                      <span>
+                        Keep your browser window open while processing
+                      </span>
                     </li>
                     <li className="flex items-start">
                       <span className="inline-block w-2 h-2 rounded-full bg-cyan-400 mr-3 mt-1 flex-shrink-0"></span>
@@ -364,7 +403,10 @@ export default function Dashboard() {
                     </li>
                     <li className="flex items-start">
                       <span className="inline-block w-2 h-2 rounded-full bg-cyan-400 mr-3 mt-1 flex-shrink-0"></span>
-                      <span>Download results immediately - links expire after 24 hours</span>
+                      <span>
+                        Download results immediately - links expire after 24
+                        hours
+                      </span>
                     </li>
                   </ul>
                 </CardContent>
@@ -377,7 +419,9 @@ export default function Dashboard() {
             {/* Quick Stats */}
             <Card className="border-slate-700/50 bg-slate-800/50 backdrop-blur-sm">
               <CardHeader>
-                <CardTitle className="text-white text-lg">Quick Stats</CardTitle>
+                <CardTitle className="text-white text-lg">
+                  Quick Stats
+                </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div>
@@ -398,7 +442,9 @@ export default function Dashboard() {
             {/* Recent Activity */}
             <Card className="border-slate-700/50 bg-slate-800/50 backdrop-blur-sm">
               <CardHeader>
-                <CardTitle className="text-white text-lg">Recent Activity</CardTitle>
+                <CardTitle className="text-white text-lg">
+                  Recent Activity
+                </CardTitle>
               </CardHeader>
               <CardContent>
                 {jobHistory.length === 0 ? (
@@ -408,12 +454,18 @@ export default function Dashboard() {
                     {jobHistory.slice(0, 3).map((job) => (
                       <div key={job.id} className="text-sm">
                         <div className="flex items-center justify-between">
-                          <span className="text-slate-300 truncate">Job #{job.id.slice(0, 8)}</span>
-                          <span className={`inline-block w-2 h-2 rounded-full ${
-                            job.status === "success" ? "bg-green-400" : 
-                            job.status === "failed" ? "bg-red-400" : 
-                            "bg-blue-400"
-                          }`}></span>
+                          <span className="text-slate-300 truncate">
+                            Job #{job.id.slice(0, 8)}
+                          </span>
+                          <span
+                            className={`inline-block w-2 h-2 rounded-full ${
+                              job.status === "success"
+                                ? "bg-green-400"
+                                : job.status === "failed"
+                                  ? "bg-red-400"
+                                  : "bg-blue-400"
+                            }`}
+                          ></span>
                         </div>
                       </div>
                     ))}

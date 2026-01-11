@@ -195,6 +195,7 @@ AFTER COOLDOWN EXPIRES
 ## 📊 Database Schema
 
 ### users
+
 ```sql
 CREATE TABLE users (
   id VARCHAR PRIMARY KEY,
@@ -207,6 +208,7 @@ CREATE TABLE users (
 ```
 
 ### user_quotas
+
 ```sql
 CREATE TABLE user_quotas (
   user_id VARCHAR PRIMARY KEY,
@@ -220,6 +222,7 @@ CREATE TABLE user_quotas (
 ```
 
 ### removal_jobs
+
 ```sql
 CREATE TABLE removal_jobs (
   id VARCHAR PRIMARY KEY,
@@ -242,6 +245,7 @@ CREATE TABLE removal_jobs (
 ```
 
 ### api_keys
+
 ```sql
 CREATE TABLE api_keys (
   id VARCHAR PRIMARY KEY,
@@ -255,6 +259,7 @@ CREATE TABLE api_keys (
 ```
 
 ### scraper_api_keys
+
 ```sql
 CREATE TABLE scraper_api_keys (
   id VARCHAR PRIMARY KEY,
@@ -374,22 +379,26 @@ PROCESS REQUEST
 ## 📈 Performance Considerations
 
 ### Queue Optimization
+
 - **Concurrency**: Max 3 jobs simultaneously
 - **FIFO**: Fair processing for all users
 - **Rate Limiting**: Quota system prevents abuse
 
 ### Database
+
 - **In-Memory**: Fast for development
 - **PostgreSQL**: Recommended for production
 - **Indexes**: userId, jobId, status for quick lookups
 
 ### API Performance
+
 - **Caching**: Use ETags for GET requests
 - **Compression**: GZIP enabled
 - **Pagination**: For large result sets
 - **Rate Limiting**: Per-user + global limits
 
 ### Frontend Optimization
+
 - **Code Splitting**: Route-based splitting with React
 - **Lazy Loading**: Components loaded on demand
 - **Caching**: HTTP caching headers
@@ -398,18 +407,21 @@ PROCESS REQUEST
 ## 🔒 Security Measures
 
 ### Authentication
+
 - JWT tokens with expiration
 - Refresh token rotation
 - Password hashing (bcrypt)
 - CORS enabled
 
 ### Authorization
+
 - Role-based access (user/admin)
 - API key verification
 - User ownership checks
 - Admin-only endpoints protected
 
 ### API Security
+
 - Input validation
 - SQL injection prevention (parameterized queries)
 - CSRF tokens (when needed)
@@ -417,6 +429,7 @@ PROCESS REQUEST
 - Request timeout
 
 ### Data Protection
+
 - Encrypted passwords
 - Environment variable secrets
 - No sensitive data in logs
@@ -447,6 +460,7 @@ E2E TESTS
 ## 📊 Monitoring & Observability
 
 ### Metrics
+
 - Request count per endpoint
 - Job success/failure rate
 - Average processing time
@@ -455,6 +469,7 @@ E2E TESTS
 - API key usage
 
 ### Logging
+
 - Request/response logs
 - Error logs with stack traces
 - Job lifecycle logs
@@ -462,6 +477,7 @@ E2E TESTS
 - Admin action logs
 
 ### Alerts
+
 - High error rate
 - Queue backup
 - API key all limited
@@ -471,6 +487,7 @@ E2E TESTS
 ---
 
 This architecture is designed for:
+
 - **Scalability**: Add more job queue workers
 - **Reliability**: Error handling and retries
 - **Maintainability**: Clean separation of concerns
@@ -478,6 +495,7 @@ This architecture is designed for:
 - **Performance**: Optimized data flow
 
 For production deployment, consider:
+
 - Load balancing
 - Database replication
 - Caching layer (Redis)

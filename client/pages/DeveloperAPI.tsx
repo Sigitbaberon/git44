@@ -1,17 +1,16 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "@/components/Navbar";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { 
-  Copy,
-  RefreshCw,
-  Key,
-  BarChart3,
-  Code2,
-  Zap
-} from "lucide-react";
+import { Copy, RefreshCw, Key, BarChart3, Code2, Zap } from "lucide-react";
 import { toast } from "sonner";
 
 export default function DeveloperAPI() {
@@ -52,7 +51,9 @@ export default function DeveloperAPI() {
         {/* Page Header */}
         <div className="mb-12">
           <h1 className="text-4xl font-bold text-white mb-2">Developer API</h1>
-          <p className="text-slate-400">Integrate git44 watermark removal into your application</p>
+          <p className="text-slate-400">
+            Integrate git44 watermark removal into your application
+          </p>
         </div>
 
         {/* API Key Section */}
@@ -81,10 +82,11 @@ export default function DeveloperAPI() {
               </div>
             </div>
             <p className="text-xs text-slate-400">
-              ⚠️ Keep your API key secret. Never share it publicly or commit it to version control.
+              ⚠️ Keep your API key secret. Never share it publicly or commit it
+              to version control.
             </p>
-            <Button 
-              variant="outline" 
+            <Button
+              variant="outline"
               className="border-slate-600 text-slate-300 hover:bg-slate-800"
             >
               <RefreshCw className="h-4 w-4 mr-2" />
@@ -112,7 +114,9 @@ export default function DeveloperAPI() {
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-slate-400 text-sm">Quota Remaining</p>
-                  <p className="text-3xl font-bold text-green-400">9,753/10,000</p>
+                  <p className="text-3xl font-bold text-green-400">
+                    9,753/10,000
+                  </p>
                 </div>
                 <BarChart3 className="h-8 w-8 text-green-400/50" />
               </div>
@@ -143,16 +147,36 @@ export default function DeveloperAPI() {
           <CardContent>
             <Tabs defaultValue="curl" className="w-full">
               <TabsList className="bg-slate-700 border-b border-slate-600">
-                <TabsTrigger value="curl" className="text-slate-300 data-[state=active]:text-white">cURL</TabsTrigger>
-                <TabsTrigger value="node" className="text-slate-300 data-[state=active]:text-white">Node.js</TabsTrigger>
-                <TabsTrigger value="python" className="text-slate-300 data-[state=active]:text-white">Python</TabsTrigger>
-                <TabsTrigger value="php" className="text-slate-300 data-[state=active]:text-white">PHP</TabsTrigger>
+                <TabsTrigger
+                  value="curl"
+                  className="text-slate-300 data-[state=active]:text-white"
+                >
+                  cURL
+                </TabsTrigger>
+                <TabsTrigger
+                  value="node"
+                  className="text-slate-300 data-[state=active]:text-white"
+                >
+                  Node.js
+                </TabsTrigger>
+                <TabsTrigger
+                  value="python"
+                  className="text-slate-300 data-[state=active]:text-white"
+                >
+                  Python
+                </TabsTrigger>
+                <TabsTrigger
+                  value="php"
+                  className="text-slate-300 data-[state=active]:text-white"
+                >
+                  PHP
+                </TabsTrigger>
               </TabsList>
 
               <TabsContent value="curl" className="space-y-4 mt-4">
                 <div className="bg-slate-900 rounded-lg p-4 overflow-x-auto">
                   <pre className="text-slate-300 text-sm font-mono">
-{`curl -X POST https://api.git44.dev/v1/generate \\
+                    {`curl -X POST https://api.git44.dev/v1/generate \\
   -H "Authorization: Bearer ${apiKey}" \\
   -H "Content-Type: application/json" \\
   -d '{
@@ -163,12 +187,14 @@ export default function DeveloperAPI() {
                 <Button
                   size="sm"
                   variant="outline"
-                  onClick={() => copyToClipboard(`curl -X POST https://api.git44.dev/v1/generate \\
+                  onClick={() =>
+                    copyToClipboard(`curl -X POST https://api.git44.dev/v1/generate \\
   -H "Authorization: Bearer ${apiKey}" \\
   -H "Content-Type: application/json" \\
   -d '{
     "link": "https://www.tiktok.com/video/123456"
-  }'`)}
+  }'`)
+                  }
                   className="border-slate-600"
                 >
                   <Copy className="h-4 w-4 mr-2" />
@@ -179,7 +205,7 @@ export default function DeveloperAPI() {
               <TabsContent value="node" className="space-y-4 mt-4">
                 <div className="bg-slate-900 rounded-lg p-4 overflow-x-auto">
                   <pre className="text-slate-300 text-sm font-mono">
-{`const response = await fetch(
+                    {`const response = await fetch(
   'https://api.git44.dev/v1/generate',
   {
     method: 'POST',
@@ -200,7 +226,8 @@ console.log(data);`}
                 <Button
                   size="sm"
                   variant="outline"
-                  onClick={() => copyToClipboard(`const response = await fetch(
+                  onClick={() =>
+                    copyToClipboard(`const response = await fetch(
   'https://api.git44.dev/v1/generate',
   {
     method: 'POST',
@@ -215,7 +242,8 @@ console.log(data);`}
 );
 
 const data = await response.json();
-console.log(data);`)}
+console.log(data);`)
+                  }
                   className="border-slate-600"
                 >
                   <Copy className="h-4 w-4 mr-2" />
@@ -226,7 +254,7 @@ console.log(data);`)}
               <TabsContent value="python" className="space-y-4 mt-4">
                 <div className="bg-slate-900 rounded-lg p-4 overflow-x-auto">
                   <pre className="text-slate-300 text-sm font-mono">
-{`import requests
+                    {`import requests
 
 headers = {
     'Authorization': 'Bearer ${apiKey}',
@@ -249,7 +277,8 @@ print(response.json())`}
                 <Button
                   size="sm"
                   variant="outline"
-                  onClick={() => copyToClipboard(`import requests
+                  onClick={() =>
+                    copyToClipboard(`import requests
 
 headers = {
     'Authorization': 'Bearer ${apiKey}',
@@ -266,7 +295,8 @@ response = requests.post(
     json=data
 )
 
-print(response.json())`)}
+print(response.json())`)
+                  }
                   className="border-slate-600"
                 >
                   <Copy className="h-4 w-4 mr-2" />
@@ -277,7 +307,7 @@ print(response.json())`)}
               <TabsContent value="php" className="space-y-4 mt-4">
                 <div className="bg-slate-900 rounded-lg p-4 overflow-x-auto">
                   <pre className="text-slate-300 text-sm font-mono">
-{`<?php
+                    {`<?php
 $url = 'https://api.git44.dev/v1/generate';
 $apiKey = '${apiKey}';
 
@@ -303,7 +333,8 @@ $result = json_decode($response);
                 <Button
                   size="sm"
                   variant="outline"
-                  onClick={() => copyToClipboard(`<?php
+                  onClick={() =>
+                    copyToClipboard(`<?php
 $url = 'https://api.git44.dev/v1/generate';
 $apiKey = '${apiKey}';
 
@@ -323,7 +354,8 @@ $options = [
 $context = stream_context_create($options);
 $response = file_get_contents($url, false, $context);
 $result = json_decode($response);
-?>`)}
+?>`)
+                  }
                   className="border-slate-600"
                 >
                   <Copy className="h-4 w-4 mr-2" />
@@ -334,12 +366,14 @@ $result = json_decode($response);
 
             {/* Response Format */}
             <div className="mt-8 pt-8 border-t border-slate-700">
-              <h3 className="text-lg font-semibold text-white mb-4">Response Format</h3>
+              <h3 className="text-lg font-semibold text-white mb-4">
+                Response Format
+              </h3>
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
                   <p className="text-slate-300 font-medium mb-2">Processing</p>
                   <div className="bg-slate-900 rounded-lg p-4 text-sm font-mono text-slate-300 overflow-x-auto">
-{`{
+                    {`{
   "status": "processing",
   "taskId": "task_xyz123",
   "link": null
@@ -349,7 +383,7 @@ $result = json_decode($response);
                 <div>
                   <p className="text-slate-300 font-medium mb-2">Success</p>
                   <div className="bg-slate-900 rounded-lg p-4 text-sm font-mono text-slate-300 overflow-x-auto">
-{`{
+                    {`{
   "status": "success",
   "taskId": "task_xyz123",
   "link": "https://cdn.git44.dev/..."
@@ -359,7 +393,7 @@ $result = json_decode($response);
                 <div className="md:col-span-2">
                   <p className="text-slate-300 font-medium mb-2">Error</p>
                   <div className="bg-slate-900 rounded-lg p-4 text-sm font-mono text-slate-300 overflow-x-auto">
-{`{
+                    {`{
   "status": "failed",
   "error": "Invalid video URL or processing failed"
 }`}

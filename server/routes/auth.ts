@@ -1,5 +1,10 @@
 import { RequestHandler } from "express";
-import { createUser, getUserByEmail, verifyPassword, getUserById } from "../utils/db";
+import {
+  createUser,
+  getUserByEmail,
+  verifyPassword,
+  getUserById,
+} from "../utils/db";
 import { generateToken, verifyToken } from "../utils/auth";
 import { AuthResponse } from "@shared/api";
 

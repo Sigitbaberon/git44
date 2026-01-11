@@ -1,5 +1,13 @@
 export type LogLevel = "info" | "warn" | "error" | "debug";
-export type LogType = "request" | "error" | "retry" | "cooldown" | "quota" | "api_usage" | "admin_action" | "system";
+export type LogType =
+  | "request"
+  | "error"
+  | "retry"
+  | "cooldown"
+  | "quota"
+  | "api_usage"
+  | "admin_action"
+  | "system";
 
 interface LogEntry {
   id: string;
@@ -24,7 +32,7 @@ class Logger {
       userId?: string;
       jobId?: string;
       metadata?: Record<string, any>;
-    }
+    },
   ) {
     const entry: LogEntry = {
       id: "log-" + Date.now().toString(36),
@@ -79,15 +87,19 @@ class Logger {
     this.log("debug", type, message, options);
   }
 
-  getLogs(filter?: { type?: LogType; userId?: string; limit?: number }): LogEntry[] {
+  getLogs(filter?: {
+    type?: LogType;
+    userId?: string;
+    limit?: number;
+  }): LogEntry[] {
     let filtered = [...this.logs];
 
     if (filter?.type) {
-      filtered = filtered.filter(log => log.type === filter.type);
+      filtered = filtered.filter((log) => log.type === filter.type);
     }
 
     if (filter?.userId) {
-      filtered = filtered.filter(log => log.userId === filter.userId);
+      filtered = filtered.filter((log) => log.userId === filter.userId);
     }
 
     const limit = filter?.limit || 100;

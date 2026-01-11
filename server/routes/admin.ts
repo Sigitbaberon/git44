@@ -31,7 +31,7 @@ export const handleAdminStats: RequestHandler = async (req, res) => {
 export const handleAdminUsers: RequestHandler = (req, res) => {
   const users = getAllUsers();
 
-  const usersList = users.map(user => {
+  const usersList = users.map((user) => {
     const quota = getUserQuota(user.id);
     return {
       id: user.id,
@@ -51,7 +51,7 @@ export const handleAdminUsers: RequestHandler = (req, res) => {
 export const handleAdminScraperKeys: RequestHandler = (req, res) => {
   const keys = getScraperApiKeys();
 
-  const formattedKeys = keys.map(key => ({
+  const formattedKeys = keys.map((key) => ({
     id: key.id,
     apiKey: key.apiKey.slice(0, 10) + "..." + key.apiKey.slice(-5), // Hide most of the key
     status: key.status,
@@ -125,7 +125,7 @@ export const handleAdminLogs: RequestHandler = (req, res) => {
     },
   ];
 
-  const filtered = type ? logs.filter(log => log.type === type) : logs;
+  const filtered = type ? logs.filter((log) => log.type === type) : logs;
 
   res.json(filtered.slice(0, Number(limit)));
 };

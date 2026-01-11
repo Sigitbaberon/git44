@@ -19,7 +19,7 @@ class JobQueue {
   start() {
     if (this.isRunning) return;
     this.isRunning = true;
-    
+
     this.pollInterval = setInterval(() => {
       this.processNextJob();
     }, 2000); // Check every 2 seconds

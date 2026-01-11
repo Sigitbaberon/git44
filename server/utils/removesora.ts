@@ -1,4 +1,10 @@
-import { getRemovalJob, updateRemovalJob, getActiveScraperApiKey, markKeyAsLimited, markKeyAsCooldown } from "./db";
+import {
+  getRemovalJob,
+  updateRemovalJob,
+  getActiveScraperApiKey,
+  markKeyAsLimited,
+  markKeyAsCooldown,
+} from "./db";
 
 const REMOVESORA_API = "https://www.removesorawatermark.online/api/removesora";
 const SCRAPER_API_URL = "http://api.scraperapi.com";
@@ -23,7 +29,11 @@ export async function processRemovalJob(jobId: string): Promise<ProcessResult> {
     // Step 1: Initialize task with POST request
     const taskId = await initializeTask(job.inputLink);
     if (!taskId) {
-      return { success: false, retry: true, error: "Failed to initialize task" };
+      return {
+        success: false,
+        retry: true,
+        error: "Failed to initialize task",
+      };
     }
 
     // Update job with task ID
@@ -32,7 +42,11 @@ export async function processRemovalJob(jobId: string): Promise<ProcessResult> {
     // Step 2: Poll for results
     const outputLink = await pollForResults(jobId, taskId);
     if (!outputLink) {
-      return { success: false, retry: true, error: "Polling timeout or failed" };
+      return {
+        success: false,
+        retry: true,
+        error: "Polling timeout or failed",
+      };
     }
 
     return { success: true, retry: false, outputLink };
@@ -79,13 +93,16 @@ async function initializeTask(videoLink: string): Promise<string | null> {
   }
 }
 
-async function pollForResults(jobId: string, taskId: string): Promise<string | null> {
+async function pollForResults(
+  jobId: string,
+  taskId: string,
+): Promise<string | null> {
   const maxPolls = 8;
   const pollInterval = 3000 + Math.random() * 2000; // 3-5 seconds
 
   for (let poll = 0; poll < maxPolls; poll++) {
     // Wait before polling
-    await new Promise(resolve => setTimeout(resolve, pollInterval));
+    await new Promise((resolve) => setTimeout(resolve, pollInterval));
 
     const scraperKey = getActiveScraperApiKey();
     if (!scraperKey) {

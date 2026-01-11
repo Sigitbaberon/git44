@@ -5,6 +5,7 @@ A production-ready full-stack web application for professional watermark removal
 ## Features
 
 ### 🎯 Core Features
+
 - **Automatic Watermark Removal**: Remove watermarks from TikTok, Instagram, YouTube, Shorts, and more
 - **Automatic ScraperAPI Key Rotation**: Intelligent key rotation with cooldown management
 - **Async Job Queue System**: FIFO queue with multi-user concurrency and rate limiting
@@ -12,6 +13,7 @@ A production-ready full-stack web application for professional watermark removal
 - **User Quotas**: Flexible quota system with daily limits and developer tier management
 
 ### 👨‍💻 Developer Features
+
 - **REST API**: Complete API for third-party integration
 - **API Key Management**: Automatic key generation for new users
 - **Rate Limiting**: Built-in rate limiting and quota tracking
@@ -19,12 +21,14 @@ A production-ready full-stack web application for professional watermark removal
 - **Real-time Stats**: Usage statistics and quota monitoring
 
 ### 🛡️ Admin Features
+
 - **ScraperAPI Key Management**: Add, remove, and manage API keys
 - **User Management**: View users, reset quotas, suspend accounts
 - **System Monitoring**: Real-time queue status, logs, and metrics
 - **Advanced Logging**: Request logs, error logs, retry logs, cooldown tracking
 
 ### 🎨 UI/UX
+
 - **Modern Dark Theme**: Professional Slate-900 color scheme with cyan accents
 - **Responsive Design**: Works perfectly on desktop, tablet, and mobile
 - **Real-time Feedback**: Toast notifications, status badges, live progress
@@ -33,6 +37,7 @@ A production-ready full-stack web application for professional watermark removal
 ## Tech Stack
 
 ### Frontend
+
 - **React 18** with React Router 6
 - **TypeScript** for type safety
 - **TailwindCSS 3** for styling
@@ -43,6 +48,7 @@ A production-ready full-stack web application for professional watermark removal
 - **TanStack Query** for data fetching
 
 ### Backend
+
 - **Express.js** for REST API
 - **TypeScript** for type safety
 - **In-memory storage** (can be replaced with PostgreSQL/MongoDB)
@@ -50,6 +56,7 @@ A production-ready full-stack web application for professional watermark removal
 - **CORS** for cross-origin requests
 
 ### Deployment
+
 - **Docker** ready
 - **Node.js** compatible
 - **Netlify/Vercel** deployment support
@@ -57,29 +64,34 @@ A production-ready full-stack web application for professional watermark removal
 ## Installation
 
 ### Prerequisites
+
 - Node.js 18+
 - pnpm (or npm/yarn)
 
 ### Setup
 
 1. **Clone the repository**
+
 ```bash
 git clone https://github.com/yourusername/git44.git
 cd git44
 ```
 
 2. **Install dependencies**
+
 ```bash
 pnpm install
 ```
 
 3. **Configure environment variables**
+
 ```bash
 cp .env.example .env
 # Edit .env and add your ScraperAPI keys
 ```
 
 4. **Start development server**
+
 ```bash
 pnpm dev
 ```
@@ -110,6 +122,7 @@ JOB_MAX_POLLS=8
 ### Authentication
 
 #### Register
+
 ```bash
 POST /api/auth/register
 Content-Type: application/json
@@ -130,6 +143,7 @@ Response:
 ```
 
 #### Login
+
 ```bash
 POST /api/auth/login
 Content-Type: application/json
@@ -151,6 +165,7 @@ Response:
 ### Removal Jobs (Authenticated)
 
 #### Create Job
+
 ```bash
 POST /api/removal/create
 Authorization: Bearer <accessToken>
@@ -179,6 +194,7 @@ Response:
 ```
 
 #### Get Job Status
+
 ```bash
 GET /api/removal/{jobId}/status
 Authorization: Bearer <accessToken>
@@ -187,6 +203,7 @@ Response: { job object with current status }
 ```
 
 #### Get User Jobs
+
 ```bash
 GET /api/removal/user/jobs
 Authorization: Bearer <accessToken>
@@ -197,6 +214,7 @@ Response: [ job objects ... ]
 ### Developer API (API Key Required)
 
 #### Generate (Remove Watermark)
+
 ```bash
 POST /api/v1/generate
 Authorization: Bearer <API_KEY>
@@ -215,6 +233,7 @@ Response:
 ```
 
 #### Get Status
+
 ```bash
 GET /api/v1/status/{taskId}
 Authorization: Bearer <API_KEY>
@@ -229,6 +248,7 @@ Response:
 ```
 
 #### Get Stats
+
 ```bash
 GET /api/v1/stats
 Authorization: Bearer <API_KEY>
@@ -248,24 +268,28 @@ Response:
 ### Admin API (Admin Auth Required)
 
 #### Get System Stats
+
 ```bash
 GET /api/admin/stats
 Authorization: Bearer <adminToken>
 ```
 
 #### Get All Users
+
 ```bash
 GET /api/admin/users
 Authorization: Bearer <adminToken>
 ```
 
 #### Get ScraperAPI Keys
+
 ```bash
 GET /api/admin/scraper-keys
 Authorization: Bearer <adminToken>
 ```
 
 #### Update ScraperAPI Key Status
+
 ```bash
 PATCH /api/admin/scraper-keys/{keyId}
 Authorization: Bearer <adminToken>
@@ -277,12 +301,14 @@ Content-Type: application/json
 ```
 
 #### Get Logs
+
 ```bash
 GET /api/admin/logs?type=error&limit=100
 Authorization: Bearer <adminToken>
 ```
 
 #### Get Queue Status
+
 ```bash
 GET /api/admin/queue
 Authorization: Bearer <adminToken>
@@ -294,13 +320,13 @@ Authorization: Bearer <adminToken>
 
 1. **User Input**: User submits video URL via dashboard
 2. **Queue**: Job is added to async FIFO queue
-3. **Processing**: 
+3. **Processing**:
    - POST request to RemoveSora via ScraperAPI
    - Receives taskId
-4. **Polling**: 
+4. **Polling**:
    - GET requests to RemoveSora every 3-5 seconds
    - Maximum 8 polling attempts
-5. **Result**: 
+5. **Result**:
    - Success: Return download link
    - Failure: Return error and retry up to 3 times
    - Final Failure: Mark job as failed
@@ -315,6 +341,7 @@ Authorization: Bearer <adminToken>
 ### ScraperAPI Key Rotation
 
 When a key hits limits:
+
 1. Mark key as "limited"
 2. Try next available key
 3. If all keys limited, enter 1-hour cooldown
@@ -323,11 +350,13 @@ When a key hits limits:
 ### Error Handling
 
 **Transient Errors** (Retry):
+
 - Network timeouts
 - Temporary API unavailability
 - Rate limiting
 
 **Permanent Errors** (Don't Retry):
+
 - Invalid video URL
 - Account suspension
 - Invalid API key
@@ -335,6 +364,7 @@ When a key hits limits:
 ## Development
 
 ### Project Structure
+
 ```
 git44/
 ├── client/                 # React frontend
@@ -354,21 +384,25 @@ git44/
 ```
 
 ### Running Tests
+
 ```bash
 pnpm test
 ```
 
 ### Type Checking
+
 ```bash
 pnpm typecheck
 ```
 
 ### Building
+
 ```bash
 pnpm build
 ```
 
 ### Production
+
 ```bash
 pnpm start
 ```
@@ -376,6 +410,7 @@ pnpm start
 ## Deployment
 
 ### Docker
+
 ```bash
 # Build image
 docker build -t git44 .
@@ -385,11 +420,13 @@ docker run -p 3000:3000 git44
 ```
 
 ### Netlify/Vercel
+
 The app is compatible with Netlify and Vercel deployment. Connect your repository and it will automatically deploy.
 
 ## Security Considerations
 
 ### Production Checklist
+
 - [ ] Change JWT secrets in `.env`
 - [ ] Use a real database (PostgreSQL/MongoDB)
 - [ ] Implement bcrypt for password hashing
@@ -416,6 +453,7 @@ MIT License - see LICENSE file for details
 ## Support
 
 For issues and questions:
+
 - Create an issue on GitHub
 - Email: support@git44.dev
 - Documentation: https://docs.git44.dev
@@ -437,6 +475,7 @@ Built with love by the git44 team.
 ## Changelog
 
 ### v1.0.0 (2024-01-XX)
+
 - Initial release
 - Core watermark removal functionality
 - Developer API

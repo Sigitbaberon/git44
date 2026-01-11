@@ -8,7 +8,10 @@ interface NavbarProps {
   onLogout?: () => void;
 }
 
-export default function Navbar({ isAuthenticated = false, onLogout }: NavbarProps) {
+export default function Navbar({
+  isAuthenticated = false,
+  onLogout,
+}: NavbarProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
 
@@ -19,7 +22,9 @@ export default function Navbar({ isAuthenticated = false, onLogout }: NavbarProp
   };
 
   const isActive = (path: string) => {
-    return location.pathname === path ? "text-cyan-400" : "text-slate-300 hover:text-white";
+    return location.pathname === path
+      ? "text-cyan-400"
+      : "text-slate-300 hover:text-white";
   };
 
   return (
@@ -31,35 +36,58 @@ export default function Navbar({ isAuthenticated = false, onLogout }: NavbarProp
             <div className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-500 to-blue-600">
               <span className="text-lg font-bold text-white">G</span>
             </div>
-            <span className="text-xl font-bold text-white hidden sm:inline">git44</span>
+            <span className="text-xl font-bold text-white hidden sm:inline">
+              git44
+            </span>
           </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {isAuthenticated ? (
               <>
-                <Link to="/dashboard" className={`text-sm font-medium transition-colors ${isActive("/dashboard")}`}>
+                <Link
+                  to="/dashboard"
+                  className={`text-sm font-medium transition-colors ${isActive("/dashboard")}`}
+                >
                   Dashboard
                 </Link>
-                <Link to="/history" className={`text-sm font-medium transition-colors ${isActive("/history")}`}>
+                <Link
+                  to="/history"
+                  className={`text-sm font-medium transition-colors ${isActive("/history")}`}
+                >
                   History
                 </Link>
-                <Link to="/developer-api" className={`text-sm font-medium transition-colors ${isActive("/developer-api")}`}>
+                <Link
+                  to="/developer-api"
+                  className={`text-sm font-medium transition-colors ${isActive("/developer-api")}`}
+                >
                   Developer
                 </Link>
-                <Link to="/admin" className={`text-sm font-medium transition-colors ${isActive("/admin")}`}>
+                <Link
+                  to="/admin"
+                  className={`text-sm font-medium transition-colors ${isActive("/admin")}`}
+                >
                   Admin
                 </Link>
               </>
             ) : (
               <>
-                <Link to="/" className={`text-sm font-medium transition-colors ${isActive("/")}`}>
+                <Link
+                  to="/"
+                  className={`text-sm font-medium transition-colors ${isActive("/")}`}
+                >
                   Home
                 </Link>
-                <a href="#features" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">
+                <a
+                  href="#features"
+                  className="text-sm font-medium text-slate-300 hover:text-white transition-colors"
+                >
                   Features
                 </a>
-                <a href="#pricing" className="text-sm font-medium text-slate-300 hover:text-white transition-colors">
+                <a
+                  href="#pricing"
+                  className="text-sm font-medium text-slate-300 hover:text-white transition-colors"
+                >
                   Pricing
                 </a>
               </>

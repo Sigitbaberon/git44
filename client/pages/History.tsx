@@ -1,17 +1,23 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "@/components/Navbar";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { 
-  Download, 
-  Copy, 
+import {
+  Download,
+  Copy,
   Trash2,
   Search,
   CheckCircle2,
   AlertCircle,
-  Clock
+  Clock,
 } from "lucide-react";
 
 export default function History() {
@@ -55,7 +61,9 @@ export default function History() {
         {/* Page Header */}
         <div className="mb-12">
           <h1 className="text-4xl font-bold text-white mb-2">My History</h1>
-          <p className="text-slate-400">View all your previous watermark removals</p>
+          <p className="text-slate-400">
+            View all your previous watermark removals
+          </p>
         </div>
 
         {/* Search Bar */}
@@ -78,7 +86,9 @@ export default function History() {
         <Card className="border-slate-700/50 bg-slate-800/50 backdrop-blur-sm overflow-hidden">
           <CardHeader>
             <CardTitle className="text-white">Processing History</CardTitle>
-            <CardDescription className="text-slate-400">All your watermark removal jobs</CardDescription>
+            <CardDescription className="text-slate-400">
+              All your watermark removal jobs
+            </CardDescription>
           </CardHeader>
           <CardContent>
             <div className="overflow-x-auto">
@@ -99,7 +109,9 @@ export default function History() {
                     <td className="py-4 px-4">
                       <div className="flex items-center">
                         <CheckCircle2 className="h-4 w-4 text-green-400 mr-2" />
-                        <span className="text-green-400 font-medium">Success</span>
+                        <span className="text-green-400 font-medium">
+                          Success
+                        </span>
                       </div>
                     </td>
                     <td className="py-4 px-4">
@@ -107,15 +119,9 @@ export default function History() {
                         tiktok.com/video/123456...
                       </code>
                     </td>
-                    <td className="py-4 px-4 text-slate-400">
-                      2 hours ago
-                    </td>
-                    <td className="py-4 px-4 text-slate-400">
-                      45s
-                    </td>
-                    <td className="py-4 px-4 text-slate-400">
-                      0
-                    </td>
+                    <td className="py-4 px-4 text-slate-400">2 hours ago</td>
+                    <td className="py-4 px-4 text-slate-400">45s</td>
+                    <td className="py-4 px-4 text-slate-400">0</td>
                     <td className="py-4 px-4 text-right space-x-2">
                       <Button
                         size="icon"
@@ -128,7 +134,9 @@ export default function History() {
                       <Button
                         size="icon"
                         variant="ghost"
-                        onClick={() => handleDownload("https://example.com/video")}
+                        onClick={() =>
+                          handleDownload("https://example.com/video")
+                        }
                         className="h-8 w-8"
                       >
                         <Download className="h-4 w-4" />
@@ -148,15 +156,9 @@ export default function History() {
                         instagram.com/reels/987654...
                       </code>
                     </td>
-                    <td className="py-4 px-4 text-slate-400">
-                      4 hours ago
-                    </td>
-                    <td className="py-4 px-4 text-slate-400">
-                      120s
-                    </td>
-                    <td className="py-4 px-4 text-slate-400">
-                      3
-                    </td>
+                    <td className="py-4 px-4 text-slate-400">4 hours ago</td>
+                    <td className="py-4 px-4 text-slate-400">120s</td>
+                    <td className="py-4 px-4 text-slate-400">3</td>
                     <td className="py-4 px-4 text-right space-x-2">
                       <Button
                         size="icon"
@@ -166,11 +168,7 @@ export default function History() {
                       >
                         <Copy className="h-4 w-4" />
                       </Button>
-                      <Button
-                        size="icon"
-                        variant="ghost"
-                        className="h-8 w-8"
-                      >
+                      <Button size="icon" variant="ghost" className="h-8 w-8">
                         <Trash2 className="h-4 w-4" />
                       </Button>
                     </td>
@@ -180,7 +178,9 @@ export default function History() {
                     <td className="py-4 px-4">
                       <div className="flex items-center">
                         <Clock className="h-4 w-4 text-blue-400 mr-2 animate-spin" />
-                        <span className="text-blue-400 font-medium">Processing</span>
+                        <span className="text-blue-400 font-medium">
+                          Processing
+                        </span>
                       </div>
                     </td>
                     <td className="py-4 px-4">
@@ -188,15 +188,9 @@ export default function History() {
                         youtube.com/watch?v=555...
                       </code>
                     </td>
-                    <td className="py-4 px-4 text-slate-400">
-                      5 minutes ago
-                    </td>
-                    <td className="py-4 px-4 text-slate-400">
-                      -
-                    </td>
-                    <td className="py-4 px-4 text-slate-400">
-                      1
-                    </td>
+                    <td className="py-4 px-4 text-slate-400">5 minutes ago</td>
+                    <td className="py-4 px-4 text-slate-400">-</td>
+                    <td className="py-4 px-4 text-slate-400">1</td>
                     <td className="py-4 px-4 text-right space-x-2">
                       <Button
                         size="icon"

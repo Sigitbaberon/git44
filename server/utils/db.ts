@@ -1,4 +1,10 @@
-import { User, RemovalJob, ApiKey, UserQuota, ScraperApiConfig } from "@shared/api";
+import {
+  User,
+  RemovalJob,
+  ApiKey,
+  UserQuota,
+  ScraperApiConfig,
+} from "@shared/api";
 import { generateApiKey } from "./auth";
 
 // In-memory storage (will be lost on server restart)
@@ -49,7 +55,11 @@ export function initializeDb() {
 }
 
 // User operations
-export function createUser(email: string, password: string, role: "user" | "admin" = "user"): User {
+export function createUser(
+  email: string,
+  password: string,
+  role: "user" | "admin" = "user",
+): User {
   const id = "user-" + Date.now().toString(36);
   const user: User = {
     id,
@@ -58,10 +68,10 @@ export function createUser(email: string, password: string, role: "user" | "admi
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
   };
-  
+
   users.set(id, user);
   userPasswords.set(id, password); // In production, use bcrypt.hash()
-  
+
   // Create quota
   userQuotas.set(id, {
     userId: id,
@@ -75,14 +85,16 @@ export function createUser(email: string, password: string, role: "user" | "admi
 
   // Create API key
   const apiKey = generateApiKey(id);
-  userApiKeys.set(id, [{
-    id: "key-" + id,
-    userId: id,
-    key: apiKey,
-    name: "Default API Key",
-    lastUsed: null,
-    createdAt: new Date().toISOString(),
-  }]);
+  userApiKeys.set(id, [
+    {
+      id: "key-" + id,
+      userId: id,
+      key: apiKey,
+      name: "Default API Key",
+      lastUsed: null,
+      createdAt: new Date().toISOString(),
+    },
+  ]);
 
   return user;
 }
@@ -105,7 +117,10 @@ export function verifyPassword(userId: string, password: string): boolean {
 }
 
 // Removal Job operations
-export function createRemovalJob(userId: string, inputLink: string): RemovalJob {
+export function createRemovalJob(
+  userId: string,
+  inputLink: string,
+): RemovalJob {
   const id = "job-" + Date.now().toString(36);
   const job: RemovalJob = {
     id,
@@ -126,7 +141,7 @@ export function createRemovalJob(userId: string, inputLink: string): RemovalJob 
   };
 
   removalJobs.set(id, job);
-  
+
   // Deduct quota
   const quota = userQuotas.get(userId);
   if (quota && quota.remainingQuota > 0) {
@@ -142,7 +157,10 @@ export function getRemovalJob(jobId: string): RemovalJob | null {
   return removalJobs.get(jobId) || null;
 }
 
-export function updateRemovalJob(jobId: string, updates: Partial<RemovalJob>): RemovalJob | null {
+export function updateRemovalJob(
+  jobId: string,
+  updates: Partial<RemovalJob>,
+): RemovalJob | null {
   const job = removalJobs.get(jobId);
   if (!job) return null;
 
@@ -152,7 +170,9 @@ export function updateRemovalJob(jobId: string, updates: Partial<RemovalJob>): R
 }
 
 export function getUserRemovalJobs(userId: string): RemovalJob[] {
-  return Array.from(removalJobs.values()).filter(job => job.userId === userId);
+  return Array.from(removalJobs.values()).filter(
+    (job) => job.userId === userId,
+  );
 }
 
 // API Key operations
@@ -162,7 +182,7 @@ export function getUserApiKeys(userId: string): ApiKey[] {
 
 export function getApiKeyByKey(key: string): ApiKey | null {
   for (const keys of userApiKeys.values()) {
-    const found = keys.find(k => k.key === key);
+    const found = keys.find((k) => k.key === key);
     if (found) return found;
   }
   return null;
@@ -179,14 +199,21 @@ export function getScraperApiKeys(): ScraperApiConfig[] {
 }
 
 export function getActiveScraperApiKey(): ScraperApiConfig | null {
-  return scraperApiKeys.find(key => key.status === "active") || null;
+  return scraperApiKeys.find((key) => key.status === "active") || null;
 }
 
-export function updateScraperApiKey(keyId: string, updates: Partial<ScraperApiConfig>): ScraperApiConfig | null {
-  const index = scraperApiKeys.findIndex(k => k.id === keyId);
+export function updateScraperApiKey(
+  keyId: string,
+  updates: Partial<ScraperApiConfig>,
+): ScraperApiConfig | null {
+  const index = scraperApiKeys.findIndex((k) => k.id === keyId);
   if (index === -1) return null;
 
-  scraperApiKeys[index] = { ...scraperApiKeys[index], ...updates, updatedAt: new Date().toISOString() };
+  scraperApiKeys[index] = {
+    ...scraperApiKeys[index],
+    ...updates,
+    updatedAt: new Date().toISOString(),
+  };
   return scraperApiKeys[index];
 }
 
@@ -197,10 +224,15 @@ export function markKeyAsLimited(keyId: string): ScraperApiConfig | null {
   });
 }
 
-export function markKeyAsCooldown(keyId: string, cooldownMinutes: number = 60): ScraperApiConfig | null {
+export function markKeyAsCooldown(
+  keyId: string,
+  cooldownMinutes: number = 60,
+): ScraperApiConfig | null {
   return updateScraperApiKey(keyId, {
     status: "cooldown",
-    cooldownUntil: new Date(Date.now() + cooldownMinutes * 60 * 1000).toISOString(),
+    cooldownUntil: new Date(
+      Date.now() + cooldownMinutes * 60 * 1000,
+    ).toISOString(),
   });
 }
 
