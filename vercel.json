@@ -4,11 +4,6 @@
   "devCommand": "pnpm dev",
   "installCommand": "pnpm install",
   "framework": "vite",
-  "functions": {
-    "server/**/*.ts": {
-      "runtime": "nodejs18.x"
-    }
-  },
   "env": {
     "NODE_ENV": "production"
   },
