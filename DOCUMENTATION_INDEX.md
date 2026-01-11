@@ -5,7 +5,9 @@ Panduan lengkap untuk semua aspek git44 watermark removal platform.
 ## 📚 Dokumentasi Tersedia
 
 ### 1. **QUICK_START.md** (5 menit read)
+
 **Untuk:** Siapa yang ingin langsung mulai development lokal
+
 - ✅ 5-menit setup guide
 - ✅ Local development commands
 - ✅ Testing checklist
@@ -16,7 +18,9 @@ Panduan lengkap untuk semua aspek git44 watermark removal platform.
 ---
 
 ### 2. **README.md** (15 menit read)
+
 **Untuk:** Overview lengkap project dan dokumentasi API
+
 - ✅ Feature overview
 - ✅ Tech stack detailed
 - ✅ Installation instructions
@@ -30,7 +34,9 @@ Panduan lengkap untuk semua aspek git44 watermark removal platform.
 ---
 
 ### 3. **IMPLEMENTATION.md** (20 menit read)
+
 **Untuk:** Detail apa yang sudah diimplementasi
+
 - ✅ Frontend components breakdown
 - ✅ Backend utilities explained
 - ✅ Shared types documentation
@@ -44,7 +50,9 @@ Panduan lengkap untuk semua aspek git44 watermark removal platform.
 ---
 
 ### 4. **ARCHITECTURE.md** (25 menit read)
+
 **Untuk:** Deep dive into system design
+
 - ✅ High-level architecture diagram
 - ✅ Job processing flow detailed
 - ✅ ScraperAPI key rotation flow
@@ -62,7 +70,9 @@ Panduan lengkap untuk semua aspek git44 watermark removal platform.
 ---
 
 ### 5. **VERCEL_DEPLOYMENT.md** (30 menit read)
+
 **Untuk:** Step-by-step tutorial deployment ke Vercel (Indonesia)
+
 - ✅ Prasyarat lengkap
 - ✅ Persiapan project lokal
 - ✅ Konfigurasi build
@@ -82,7 +92,9 @@ Panduan lengkap untuk semua aspek git44 watermark removal platform.
 ---
 
 ### 6. **VERCEL_QUICK_GUIDE.md** (5 menit read)
+
 **Untuk:** Quick reference untuk Vercel deployment
+
 - ✅ Super quick start (5 menit)
 - ✅ Step-by-step visual guide
 - ✅ Deployment checklist
@@ -99,7 +111,9 @@ Panduan lengkap untuk semua aspek git44 watermark removal platform.
 ---
 
 ### 7. **AGENTS.md** (5 menit read)
+
 **Untuk:** Project template documentation (auto-generated)
+
 - Tech stack overview
 - Project structure
 - Key features
@@ -151,6 +165,7 @@ QUICK_START.md (5 min)
 ## 📖 How to Use These Docs
 
 ### Scenario 1: "Saya baru, mau mulai dari 0"
+
 ```
 1. QUICK_START.md        → Setup lokal, jalankan dev
 2. README.md             → Pahami features & API
@@ -158,6 +173,7 @@ QUICK_START.md (5 min)
 ```
 
 ### Scenario 2: "Saya sudah develop lokal, mau tahu apa yang built"
+
 ```
 1. IMPLEMENTATION.md     → Lihat feature checklist
 2. ARCHITECTURE.md       → Pahami system design
@@ -165,6 +181,7 @@ QUICK_START.md (5 min)
 ```
 
 ### Scenario 3: "Saya mau deploy ke production"
+
 ```
 1. VERCEL_QUICK_GUIDE.md  → Quick overview (5 min)
 2. VERCEL_DEPLOYMENT.md   → Step-by-step detailed
@@ -173,6 +190,7 @@ QUICK_START.md (5 min)
 ```
 
 ### Scenario 4: "Saya debugging issue atau design system"
+
 ```
 1. ARCHITECTURE.md        → Pahami flow
 2. README.md              → Check API endpoints
@@ -180,6 +198,7 @@ QUICK_START.md (5 min)
 ```
 
 ### Scenario 5: "Saya production engineer, mau scale"
+
 ```
 1. ARCHITECTURE.md        → System design
 2. VERCEL_DEPLOYMENT.md   → Deployment strategy
@@ -192,6 +211,7 @@ QUICK_START.md (5 min)
 ## 🎯 Quick Reference
 
 ### Development Commands
+
 ```bash
 pnpm install              # Install dependencies
 pnpm dev                  # Start dev server
@@ -202,6 +222,7 @@ pnpm typecheck            # Check TypeScript
 ```
 
 ### Key Files & Paths
+
 ```
 Frontend:    client/pages, client/components
 Backend:     server/routes, server/utils
@@ -211,6 +232,7 @@ Env:         .env.example
 ```
 
 ### API Endpoints
+
 ```
 Auth:        POST /api/auth/login, /register
 Jobs:        POST /api/removal/create, GET /api/removal/{id}/status
@@ -225,21 +247,25 @@ Admin:       GET /api/admin/stats, users, logs, etc.
 Use this checklist untuk track dokumentasi yang sudah dibaca:
 
 ### Local Development
+
 - [ ] QUICK_START.md (setup lokal)
 - [ ] README.md (overview)
 - [ ] Terminal: `pnpm dev` (run locally)
 
 ### Understanding the System
+
 - [ ] IMPLEMENTATION.md (feature breakdown)
 - [ ] ARCHITECTURE.md (system design)
 - [ ] Code exploration (inspect source)
 
 ### Development
+
 - [ ] Modify features
 - [ ] Test changes
 - [ ] Check console for errors
 
 ### Deployment
+
 - [ ] VERCEL_QUICK_GUIDE.md (5-min overview)
 - [ ] VERCEL_DEPLOYMENT.md (detailed setup)
 - [ ] Push to GitHub
@@ -248,6 +274,7 @@ Use this checklist untuk track dokumentasi yang sudah dibaca:
 - [ ] Test production build
 
 ### Production
+
 - [ ] Custom domain (optional)
 - [ ] Monitoring setup
 - [ ] Database connection
@@ -258,6 +285,7 @@ Use this checklist untuk track dokumentasi yang sudah dibaca:
 ## 🚀 Getting Started Paths
 
 ### Path 1: Developer (Local Development)
+
 ```
 Duration: 15 minutes
 1. QUICK_START.md              (5 min)
@@ -268,6 +296,7 @@ Ready to code!
 ```
 
 ### Path 2: Understanding the Codebase
+
 ```
 Duration: 45 minutes
 1. QUICK_START.md              (5 min)
@@ -277,6 +306,7 @@ Ready to modify code!
 ```
 
 ### Path 3: Production Deployment
+
 ```
 Duration: 60 minutes
 1. QUICK_START.md              (5 min)
@@ -288,6 +318,7 @@ Production live!
 ```
 
 ### Path 4: Full System Mastery
+
 ```
 Duration: 90 minutes
 1. QUICK_START.md              (5 min)
@@ -304,6 +335,7 @@ Expert mode unlocked!
 ## 📞 Finding Answers
 
 ### "Bagaimana cara...?"
+
 1. **Setup lokal?** → QUICK_START.md
 2. **Deploy ke production?** → VERCEL_DEPLOYMENT.md
 3. **Mengerti API?** → README.md
@@ -311,12 +343,14 @@ Expert mode unlocked!
 5. **Apa yang sudah built?** → IMPLEMENTATION.md
 
 ### "Saya punya error..."
+
 1. Check QUICK_START.md troubleshooting section
 2. Check VERCEL_DEPLOYMENT.md troubleshooting section
 3. Check console untuk error details
 4. Check logs di Vercel dashboard
 
 ### "Saya mau add feature..."
+
 1. Baca IMPLEMENTATION.md untuk understand struktur
 2. Baca ARCHITECTURE.md untuk understand system flow
 3. Baca relevant section di README.md
@@ -358,17 +392,17 @@ Root/
 
 ## ✅ Documentation Completeness
 
-| Topic | Doc File | Coverage | Time |
-|-------|----------|----------|------|
-| **Local Setup** | QUICK_START.md | ✅ Complete | 5 min |
-| **Project Overview** | README.md | ✅ Complete | 15 min |
-| **Features & Implementation** | IMPLEMENTATION.md | ✅ Complete | 20 min |
-| **System Architecture** | ARCHITECTURE.md | ✅ Complete | 25 min |
-| **Vercel Deployment** | VERCEL_DEPLOYMENT.md | ✅ Complete | 30 min |
-| **Vercel Quick Ref** | VERCEL_QUICK_GUIDE.md | ✅ Complete | 5 min |
-| **API Documentation** | README.md | ✅ Complete | 15 min |
-| **Frontend Components** | IMPLEMENTATION.md | ✅ Complete | 20 min |
-| **Backend Services** | IMPLEMENTATION.md | ✅ Complete | 20 min |
+| Topic                         | Doc File              | Coverage    | Time   |
+| ----------------------------- | --------------------- | ----------- | ------ |
+| **Local Setup**               | QUICK_START.md        | ✅ Complete | 5 min  |
+| **Project Overview**          | README.md             | ✅ Complete | 15 min |
+| **Features & Implementation** | IMPLEMENTATION.md     | ✅ Complete | 20 min |
+| **System Architecture**       | ARCHITECTURE.md       | ✅ Complete | 25 min |
+| **Vercel Deployment**         | VERCEL_DEPLOYMENT.md  | ✅ Complete | 30 min |
+| **Vercel Quick Ref**          | VERCEL_QUICK_GUIDE.md | ✅ Complete | 5 min  |
+| **API Documentation**         | README.md             | ✅ Complete | 15 min |
+| **Frontend Components**       | IMPLEMENTATION.md     | ✅ Complete | 20 min |
+| **Backend Services**          | IMPLEMENTATION.md     | ✅ Complete | 20 min |
 
 ---
 
@@ -377,18 +411,21 @@ Root/
 Setelah membaca dokumentasi, Anda akan bisa:
 
 ### Basic
+
 - [ ] Setup project lokal
 - [ ] Menjalankan dev server
 - [ ] Memahami project structure
 - [ ] Menggunakan API endpoints
 
 ### Intermediate
+
 - [ ] Understand system architecture
 - [ ] Modify existing features
 - [ ] Add new components
 - [ ] Deploy ke production
 
 ### Advanced
+
 - [ ] System design decisions
 - [ ] Database optimization
 - [ ] Performance tuning
@@ -408,32 +445,35 @@ Setelah membaca dokumentasi, Anda akan bisa:
 
 ## 🔗 Dokumentasi Links
 
-| Document | Purpose | Time | Link |
-|----------|---------|------|------|
-| QUICK_START | Local setup | 5 min | [QUICK_START.md](./QUICK_START.md) |
-| README | Full docs | 15 min | [README.md](./README.md) |
-| IMPLEMENTATION | Features | 20 min | [IMPLEMENTATION.md](./IMPLEMENTATION.md) |
-| ARCHITECTURE | Design | 25 min | [ARCHITECTURE.md](./ARCHITECTURE.md) |
-| VERCEL DEPLOY | Detailed | 30 min | [VERCEL_DEPLOYMENT.md](./VERCEL_DEPLOYMENT.md) |
-| VERCEL QUICK | Reference | 5 min | [VERCEL_QUICK_GUIDE.md](./VERCEL_QUICK_GUIDE.md) |
+| Document       | Purpose     | Time   | Link                                             |
+| -------------- | ----------- | ------ | ------------------------------------------------ |
+| QUICK_START    | Local setup | 5 min  | [QUICK_START.md](./QUICK_START.md)               |
+| README         | Full docs   | 15 min | [README.md](./README.md)                         |
+| IMPLEMENTATION | Features    | 20 min | [IMPLEMENTATION.md](./IMPLEMENTATION.md)         |
+| ARCHITECTURE   | Design      | 25 min | [ARCHITECTURE.md](./ARCHITECTURE.md)             |
+| VERCEL DEPLOY  | Detailed    | 30 min | [VERCEL_DEPLOYMENT.md](./VERCEL_DEPLOYMENT.md)   |
+| VERCEL QUICK   | Reference   | 5 min  | [VERCEL_QUICK_GUIDE.md](./VERCEL_QUICK_GUIDE.md) |
 
 ---
 
 ## 🎯 Next Steps
 
 **Jika Anda baru:**
+
 1. Baca QUICK_START.md
 2. Jalankan `pnpm dev`
 3. Explore aplikasi di browser
 4. Baca README.md untuk API docs
 
 **Jika Anda sudah familiar:**
+
 1. Baca IMPLEMENTATION.md
 2. Baca ARCHITECTURE.md
 3. Modify code sesuai kebutuhan
 4. Deploy ke Vercel
 
 **Jika Anda siap production:**
+
 1. Baca VERCEL_QUICK_GUIDE.md
 2. Ikuti VERCEL_DEPLOYMENT.md
 3. Deploy & test

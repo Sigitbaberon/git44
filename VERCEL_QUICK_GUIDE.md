@@ -5,6 +5,7 @@ Panduan singkat dan cepat untuk deploy ke Vercel (5 menit!).
 ## ⚡ Super Quick Start (5 Menit)
 
 ### Step 1: Push ke GitHub (2 menit)
+
 ```bash
 git add .
 git commit -m "Ready for Vercel deployment"
@@ -12,12 +13,14 @@ git push origin main
 ```
 
 ### Step 2: Import di Vercel (2 menit)
+
 1. Buka https://vercel.com/new
 2. Klik "Import Git Repository"
 3. Paste URL: `https://github.com/username/git44`
 4. Klik "Import"
 
 ### Step 3: Set Environment Variables (1 menit)
+
 ```
 Di Vercel Dashboard → Settings → Environment Variables
 Tambahkan:
@@ -27,7 +30,8 @@ JWT_SECRET = your-secret-key
 JWT_REFRESH_SECRET = your-refresh-secret
 ```
 
-### ✅ Selesai! 
+### ✅ Selesai!
+
 Klik "Deploy" dan tunggu 2-3 menit. Aplikasi Anda live! 🎉
 
 ---
@@ -133,6 +137,7 @@ Setelah Deploy:
 ## 🔧 Environment Variables Essentials
 
 **Yang WAJIB:**
+
 ```
 SCRAPER_API_KEY_1 = sk_live_xxxxx        # Required untuk API
 JWT_SECRET = very-secret-key              # Required untuk auth
@@ -141,6 +146,7 @@ NODE_ENV = production                     # Required untuk prod
 ```
 
 **Yang Optional (tapi disarankan):**
+
 ```
 REMOVESORA_API_URL = https://www.removesorawatermark.online/api/removesora
 MAX_CONCURRENT_JOBS = 3
@@ -154,16 +160,19 @@ JOB_MAX_RETRIES = 3
 Jika mau domain custom seperti `git44.com`:
 
 ### 1. Beli Domain
+
 - Namecheap, GoDaddy, atau registrar lain
 - Harga: ~$10-15/tahun
 
 ### 2. Di Vercel Dashboard
+
 ```
 Settings → Domains → "Add Domain"
 Masukkan: git44.com
 ```
 
 ### 3. Update DNS di Registrar
+
 ```
 Type: A Record
 Name: @
@@ -175,6 +184,7 @@ Value: cname.vercel-dns.com
 ```
 
 ### 4. Tunggu DNS Propagate
+
 - Biasanya: 15 menit - 48 jam
 - Check: https://dnschecker.org
 
@@ -193,6 +203,7 @@ Production Live
 ```
 
 **Workflow:**
+
 ```bash
 # Make changes locally
 nano client/pages/Index.tsx
@@ -232,27 +243,32 @@ Status:
 
 ## 🆘 Troubleshooting Cepat
 
-| Problem | Solusi |
-|---------|--------|
-| Build gagal | Cek: `pnpm run build` lokal dulu |
-| Module not found | Pastikan `pnpm-lock.yaml` ter-push ke git |
-| Env variables undefined | Redeploy setelah set variables |
-| CORS error | Set `CORS_ORIGIN` di env var |
-| 502 Bad Gateway | Tunggu 1-2 menit, refresh page |
+| Problem                 | Solusi                                    |
+| ----------------------- | ----------------------------------------- |
+| Build gagal             | Cek: `pnpm run build` lokal dulu          |
+| Module not found        | Pastikan `pnpm-lock.yaml` ter-push ke git |
+| Env variables undefined | Redeploy setelah set variables            |
+| CORS error              | Set `CORS_ORIGIN` di env var              |
+| 502 Bad Gateway         | Tunggu 1-2 menit, refresh page            |
 
 ---
 
 ## 💡 Tips & Tricks
 
 ### Tip 1: Preview Deployments
+
 Setiap PR akan dapat preview URL:
+
 ```
 ✓ https://git44-pr-123.vercel.app
 ```
+
 Test sebelum merge!
 
 ### Tip 2: Rollback Cepat
+
 Jika ada issue:
+
 ```
 Dashboard → Deployments
 Cari deployment sebelumnya
@@ -260,12 +276,14 @@ Klik "..." → "Promote to Production"
 ```
 
 ### Tip 3: View Logs
+
 ```
 Deployments → [Deployment Name] → "Logs"
 Lihat output build dan runtime logs
 ```
 
 ### Tip 4: Performance Monitoring
+
 ```
 Settings → Analytics
 Lihat real-time performance metrics
@@ -302,6 +320,7 @@ Setelah deploy, test ini:
 ## 🎯 Deployment Scenarios
 
 ### Scenario 1: Fresh Deploy (First Time)
+
 ```
 1. Push code to GitHub ✓
 2. Open Vercel.com/new ✓
@@ -314,6 +333,7 @@ Setelah deploy, test ini:
 ```
 
 ### Scenario 2: Update Code
+
 ```
 1. Make changes locally ✓
 2. Test with: pnpm dev ✓
@@ -324,6 +344,7 @@ Setelah deploy, test ini:
 ```
 
 ### Scenario 3: Update Environment Variable
+
 ```
 1. Vercel Dashboard → Settings → Env Variables ✓
 2. Update/add variable ✓
@@ -354,17 +375,20 @@ Deployment berhasil jika:
 **Jika ada masalah:**
 
 1. **Check Vercel Logs**
+
    ```
    Dashboard → Deployments → [Latest] → Logs
    ```
 
 2. **Check Browser Console**
+
    ```
    F12 → Console tab
    Lihat error messages
    ```
 
 3. **Test Lokal Dulu**
+
    ```
    pnpm run build
    pnpm start
@@ -407,6 +431,7 @@ Setelah deployment berhasil:
 Untuk detail lengkap, baca: **VERCEL_DEPLOYMENT.md**
 
 Topik yang dicover:
+
 - Environment variables detailed
 - Custom domain setup
 - Monitoring & analytics
@@ -428,13 +453,14 @@ Aplikasi **git44** Anda sekarang **live di production** dengan:
 ✅ Automatic deployments  
 ✅ Preview deployments  
 ✅ Analytics & monitoring  
-✅ Rollback capability  
+✅ Rollback capability
 
 **Setiap `git push` ke main = instant deployment!** 🚀
 
 ---
 
 **Butuh bantuan?** Lihat file dokumentasi lengkap:
+
 - `VERCEL_DEPLOYMENT.md` - Tutorial lengkap
 - `README.md` - Project overview
 - `QUICK_START.md` - Local setup

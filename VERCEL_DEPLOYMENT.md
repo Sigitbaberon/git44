@@ -119,6 +119,7 @@ ls -la dist/
 ```
 
 Output yang diharapkan:
+
 - `dist/spa/` - Frontend bundle
 - `dist/server/` - Backend server
 
@@ -172,15 +173,19 @@ vercel
 Di halaman import Vercel:
 
 **Project Name:**
+
 - `git44` atau nama custom
 
 **Framework:**
+
 - Vercel akan auto-detect sebagai "Vite"
 
 **Root Directory:**
+
 - `.` (default, root folder)
 
 **Build and Output Settings:**
+
 - Build Command: `pnpm run build`
 - Output Directory: `dist`
 - Install Command: `pnpm install`
@@ -239,7 +244,7 @@ Di halaman Environment Variables, pilih "Production" untuk setiap variable yang 
 - ✅ JWT_SECRET → Production only
 - ✅ JWT_REFRESH_SECRET → Production only
 - ✅ DATABASE_URL → Production only
-- ✅ SCRAPER_API_KEY_* → Production only
+- ✅ SCRAPER*API_KEY*\* → Production only
 
 ### 5.3 Verifikasi Environment Setup
 
@@ -263,6 +268,7 @@ Setelah set environment variables:
 ### 6.2 Monitor Build Process
 
 **Build Logs:**
+
 ```
 ✓ Running Build Command: pnpm run build
 ✓ Running Packages Build
@@ -362,6 +368,7 @@ Setiap PR akan mendapat preview URL:
 ### 8.3 SSL Certificate
 
 ✅ Vercel otomatis setup SSL dengan Let's Encrypt
+
 - HTTPS enabled: ✓
 - Auto-renew: ✓
 
@@ -401,7 +408,7 @@ pnpm run typecheck
 
 ```
 Cause: Environment variable tidak loaded
-Solution: 
+Solution:
   1. Verify di Settings → Environment Variables
   2. Redeploy setelah add variables
   3. Check di /api/health endpoint
@@ -530,13 +537,14 @@ Sebelum production deployment, verify:
 
 ## 🎯 Vercel Pricing
 
-| Plan | Price | Features |
-|------|-------|----------|
-| **Free** | $0/mo | 100GB bandwidth, Git deployments, Analytics |
-| **Pro** | $20/mo | Unlimited bandwidth, Priority support |
-| **Enterprise** | Custom | SLA, Dedicated support |
+| Plan           | Price  | Features                                    |
+| -------------- | ------ | ------------------------------------------- |
+| **Free**       | $0/mo  | 100GB bandwidth, Git deployments, Analytics |
+| **Pro**        | $20/mo | Unlimited bandwidth, Priority support       |
+| **Enterprise** | Custom | SLA, Dedicated support                      |
 
 ### Bandwidth Limits
+
 - Free: 100GB/month
 - Pro: Unlimited
 - Overages: $0.50/GB
@@ -557,11 +565,13 @@ Setelah follow langkah-langkah di atas:
 ## 📞 Support & Resources
 
 ### Official Documentation
+
 - Vercel Docs: https://vercel.com/docs
 - Deploy Documentation: https://vercel.com/docs/concepts/deployments/overview
 - Environment Variables: https://vercel.com/docs/concepts/projects/environment-variables
 
 ### Vercel Command Line
+
 ```bash
 # Deploy
 vercel deploy
@@ -577,6 +587,7 @@ vercel logs
 ```
 
 ### Troubleshooting Links
+
 - Build Errors: https://vercel.com/docs/platform/frequently-asked-questions
 - Performance: https://vercel.com/docs/concepts/analytics/performance
 - Security: https://vercel.com/docs/security
@@ -611,7 +622,7 @@ Edit `vercel.json`:
 
 ```typescript
 // server/utils/cache.ts
-import { kv } from '@vercel/kv';
+import { kv } from "@vercel/kv";
 
 export async function cache(key: string, value: any, ttl: number) {
   await kv.set(key, value, { ex: ttl });
@@ -623,6 +634,7 @@ export async function cache(key: string, value: any, ttl: number) {
 **Recommended untuk production:**
 
 1. **Vercel Postgres** (Built-in)
+
    ```bash
    vercel postgres:create
    ```
@@ -642,6 +654,7 @@ export async function cache(key: string, value: any, ttl: number) {
 ## 🎉 Selesai!
 
 Aplikasi git44 Anda sekarang **live di production** dengan:
+
 - ✅ Auto-deployment dari GitHub
 - ✅ Environment variables terenkripsi
 - ✅ SSL/HTTPS enabled
